@@ -42,7 +42,7 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 dir('terraform') {
-                    sh 'terraform apply tfplan -auto-approve'
+                    sh 'terraform apply -auto-approve tfplan'
                 }
             }
         }
