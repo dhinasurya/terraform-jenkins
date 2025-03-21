@@ -1,0 +1,16 @@
+# Ignore Terraform local files
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# Ignore TF state files
+*.tfvars
+terraform.tfstate
+terraform.tfstate.backup
+
+# Ignore sensitive data
+*.tfvars
+*.tfvars.json
+
+# Ignore large files
+*.exe
