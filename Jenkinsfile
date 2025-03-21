@@ -40,12 +40,9 @@ pipeline {
             }
         }
         stage('Terraform Apply') {
-            when {
-                expression { input(message: 'Apply the Terraform plan?', ok: 'Apply') }
-            }
             steps {
                 dir('terraform') {
-                    sh 'terraform apply tfplan'
+                    sh 'terraform apply tfplan -auto-approve'
                 }
             }
         }
