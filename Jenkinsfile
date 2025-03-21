@@ -40,9 +40,11 @@ pipeline {
             }
         }
         stage('Terraform Apply') {
+            when {
+                expression { input(message: 'Apply the Terraform plan?', ok: 'Apply') }
+            }
             steps {
                 dir('terraform') {
-                    input message: 'Apply the Terraform plan?', ok: 'Apply'
                     sh 'terraform apply tfplan'
                 }
             }
@@ -50,10 +52,10 @@ pipeline {
     }
     post {
         success {
-            echo 'Terraform applied successfully!'
+            echo '✅ Terraform applied successfully!'
         }
         failure {
-            echo 'Failed to apply Terraform configuration.'
+            echo '❌ Failed to apply Terraform configuration.'
         }
     }
 }
